@@ -1,0 +1,37 @@
+<h1>Welcome!</h1>
+
+<!--one way bindingi.e. from teplate to the component-->
+<div class="play-container">
+<p>You have clicked this <span (click)="onClicked()">button</span>  {{countClicks}} times</p>
+
+</div>
+
+<!--Two way binding from teplate to the component and from the component to the template-->
+<div class="play-container">
+   
+    <input type="text" [(ngModel)]="name"/>
+    <br>
+     <strong>{{name}}</strong>
+</div>
+<!--Ng Template-->
+<!-- <div class="play-container" [ngStyle]="{
+
+    'background-color': countClicks > 3?'yellow':'lightgray',
+    'border': countClicks > 3?'4px solid black':'none'       
+
+
+}"> -->
+<!-- <div class="play-container" [style.background-color]=" countClicks > 3?'yellow':'lightgray'"> -->
+  
+  <div class="play-container" [ngClass]="getClasses()">
+    <ng-template [ngIf]="countClicks>3" [ngIfElse]="none" >
+       <p> {{countClicks}} are <strong>greater</strong> than 3 </p>
+       </ng-template>
+       <ng-template #none>
+        <p> {{countClicks}} are <strong>less</strong> than 3</p>
+        </ng-template>
+</div>
+
+<!--SOmetimes we wold want to modify the UI based on the event occured that is achieved using\
+style-binding
+-->
